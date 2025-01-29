@@ -1,0 +1,27 @@
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore virtual environment directory
+venv/
+
+# Ignore environment variables file
+.env
+
+# Ignore IDE and editor-specific files
+.vscode/
+.idea/
+*.swp
+
+# Ignore log files
+*.log
+
+# Ignore Heroku deployment artifacts
+*.sqlite3
+*.db
+.DS_Store
+
+/static/
+new_file.py
+
