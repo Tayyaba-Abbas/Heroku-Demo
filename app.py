@@ -13,9 +13,6 @@ import numpy as np
 from PIL import Image
 import random
 import torch.nn.functional as F
-
-import torch
-import gdown
 from torchvision.utils import draw_bounding_boxes, draw_segmentation_masks
 
 
@@ -53,14 +50,8 @@ model.roi_heads.box_predictor = FastRCNNPredictor(in_channels=in_features_box, n
 
 # Replace the mask predictor
 model.roi_heads.mask_predictor = MaskRCNNPredictor(in_channels=in_features_mask, dim_reduced=dim_reduced, num_classes=len(class_names))
-# Google Drive se model weights download karna
-url = 'https://drive.google.com/uc?id=1HaNBuv-qvxfth4JPoZJ1oPiyNhV4AGU4'
-output = 'model\\complete_tower_maskrcnn_resnet50_fpn_v2.pth'
-gdown.download(url, output, quiet=False)
-# Model ko load karna
-model.load_state_dict(torch.load(output, map_location=device))
 # Load the trained model weights
-#model.load_state_dict(torch.load('model\\complete_tower_maskrcnn_resnet50_fpn_v2.pth', map_location=device))
+model.load_state_dict(torch.load('model\\complete_tower_maskrcnn_resnet50_fpn_v2.pth', map_location=device))
 
 # Set the model to evaluation mode
 model.eval()
